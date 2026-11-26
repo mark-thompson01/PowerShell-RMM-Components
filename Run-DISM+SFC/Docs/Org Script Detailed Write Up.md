@@ -6,6 +6,10 @@ Previously I started using Microsoft Copilot to review Claude generated PowerShe
 ## 1. No Log Rotation
 
 ### Original 
+$LogFolder = "C:\ProgramData\CompanyName\Logs"
+if (-not (Test-Path $LogFolder)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New-Item -Path $LogFolder -ItemType Directory -Force | Out-Null
+}
 
 $TimeStamp = Get-Date -Format 'yyyy-MM-dd_HH-mm-ss"<br>
 $LogFile   = Join-Path $LogFolder "Health_$TimeStamp.log"
@@ -22,12 +26,22 @@ Valid concern, but low severity. Each log is small, and a maintenance script lik
 Add a block that does count-based retention, keeping the 10 most recent logs. 
 
 #### Change Implemented: 
+$LogFolder = "C:\ProgramData\CompanyName\Logs"
+if (-not (Test-Path $LogFolder)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New-Item -Path $LogFolder -ItemType Directory -Force | Out-Null
+}
+############# Log retention - keep the most recent runs, remove older logs
 $KeepCount = 10<br>
 
 Get-ChildItem -Path $LogFolder -Filter "Health_*.log -File |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sort-Object LastWriteTime -Descending |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select-Object -Skip $KeepCount |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove-Item -Force -ErrorAction SilentlyContinue
+
+$TimeStamp = Get-Date -Format 'yyyy-MM-dd_HH-mm-ss"<br>
+$LogFile   = Join-Path $LogFolder "Health_$TimeStamp.log"
+
+New-Item -Path $LogFile -ItemType File -Force | Out-Null
 
 #### Placement:
 After the log folder is confirmed to exist, before the new log file is created. 
