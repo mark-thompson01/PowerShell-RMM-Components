@@ -8,7 +8,7 @@ Previously I started using Microsoft Copilot to review Claude generated PowerShe
 ### Original 
 $LogFolder = "C:\ProgramData\CompanyName\Logs"<br>
 if (-not (Test-Path $LogFolder)) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New-Item -Path $LogFolder -ItemType Directory -Force | Out-Null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New-Item -Path $LogFolder -ItemType Directory -Force | Out-Null<br>
 }
 
 $TimeStamp = Get-Date -Format 'yyyy-MM-dd_HH-mm-ss"<br>
