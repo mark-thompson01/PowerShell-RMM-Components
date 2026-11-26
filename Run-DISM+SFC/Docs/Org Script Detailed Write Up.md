@@ -6,9 +6,9 @@ Previously I started using Microsoft Copilot to review Claude generated PowerShe
 ## 1. No Log Rotation
 
 ### Original 
-$LogFolder = "C:\ProgramData\CompanyName\Logs"
-if (-not (Test-Path $LogFolder)) {
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New-Item -Path $LogFolder -ItemType Directory -Force | Out-Null
+$LogFolder = "C:\ProgramData\CompanyName\Logs"<br>
+if (-not (Test-Path $LogFolder)) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New-Item -Path $LogFolder -ItemType Directory -Force | Out-Null<br>
 }
 
 $TimeStamp = Get-Date -Format 'yyyy-MM-dd_HH-mm-ss"<br>
@@ -26,11 +26,11 @@ Valid concern, but low severity. Each log is small, and a maintenance script lik
 Add a block that does count-based retention, keeping the 10 most recent logs. 
 
 #### Change Implemented: 
-$LogFolder = "C:\ProgramData\CompanyName\Logs"
-if (-not (Test-Path $LogFolder)) {
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New-Item -Path $LogFolder -ItemType Directory -Force | Out-Null
-}
-############# Log retention - keep the most recent runs, remove older logs
+$LogFolder = "C:\ProgramData\CompanyName\Logs"<br>
+if (-not (Test-Path $LogFolder)) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New-Item -Path $LogFolder -ItemType Directory -Force | Out-Null<br>
+}<br>
+############# Log retention - keep the most recent runs, remove older logs<br>
 $KeepCount = 10<br>
 
 Get-ChildItem -Path $LogFolder -Filter "Health_*.log -File |<br>
