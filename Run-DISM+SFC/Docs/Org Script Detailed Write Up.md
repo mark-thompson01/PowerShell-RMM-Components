@@ -4,7 +4,7 @@
 
 ### Original 
 
-$TimeStamp = Get-Date -Format 'yyyy-MM-dd_HH-mm-ss"
+$TimeStamp = Get-Date -Format 'yyyy-MM-dd_HH-mm-ss"<br>
 $LogFile   = Join-Path $LogFolder "Health_$TimeStamp.log"
 
 New-Item -Path $LogFile -ItemType File -Force | Out-Null
