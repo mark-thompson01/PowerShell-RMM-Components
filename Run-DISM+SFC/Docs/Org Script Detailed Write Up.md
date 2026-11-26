@@ -25,9 +25,9 @@ Add a block that does count-based retention, keeping the 10 most recent logs.
 $KeepCount = 10<br>
 
 Get-ChildItem -Path $LogFolder -Filter "Health_*.log -File |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sort-Object LastWriteTime -Descending |<br>
-&nbsp;Select-Object -Skip $KeepCount |<br>
-&nbsp;Remove-Item -Force -ErrorAction SilentlyContinue
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sort-Object LastWriteTime -Descending |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select-Object -Skip $KeepCount |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove-Item -Force -ErrorAction SilentlyContinue
 
 #### Placement:
 After the log folder is confirmed to exist, before the new log file is created. 
