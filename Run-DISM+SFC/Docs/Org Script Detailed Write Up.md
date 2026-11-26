@@ -34,7 +34,9 @@ After the log folder is confirmed to exist, before the new log file is created.
 
 #### Design Notes:
 
-> <strong>-Filter "Health_*.log"</strong> limits cleanup to the scripts own logs, so other tools writing to the same shared folder are never touched.
+> <strong>-Filter "Health_*.log"</strong>: Limits cleanup to the scripts own logs, so other tools writing to the same shared folder are never touched.
 
-> <strong>-ErrorAction SilentlyContinue</strong>
+> <strong>-ErrorAction SilentlyContinue</strong>: Keeps a locked or in-use file from stopping the health check itself.
+
+> <strong>$KeepCount</strong>: A variable at the top of the block, so retention can be changed without editing the logic.  
 
